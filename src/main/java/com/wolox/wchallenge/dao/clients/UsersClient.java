@@ -26,4 +26,11 @@ public class UsersClient {
 				new ParameterizedTypeReference<List<UsersDTO>>() {});
 		return response.getBody();
 	}
+
+	public List<UsersDTO> getUserById(String id) {
+		ResponseEntity<List<UsersDTO>> response = restTemplate.exchange(url.concat("users?id=").concat(id), 
+				HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<UsersDTO>>() {});
+		return response.getBody();
+	}
 }

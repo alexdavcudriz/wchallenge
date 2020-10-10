@@ -30,9 +30,9 @@ public class UsersService {
 	private SharedAlbumsRepository sharedAlbumRepo;
 	
 	public ResponseDTO findAll(String albumId) throws NotFoundException {
+		if ("0".equals(albumId)) return new ResponseDTO(ResultDTO.getSuccessfulDTO(), client.getUsers());
 		List<AlbumsDTO> albumsFound = albumClient.getAlbumsById(albumId.toString());
 		if (albumsFound.isEmpty()) throw new NotFoundException("Album id not found");
-		if ("0".equals(albumId)) return new ResponseDTO(ResultDTO.getSuccessfulDTO(), client.getUsers());
 		return findAllByPermission(Integer.parseInt(albumId));
 		
 	}

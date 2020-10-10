@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wolox.wchallenge.commons.dtos.ResponseDTO;
@@ -18,7 +19,9 @@ public class CommentsController {
 	private CommentsService service;
 
 	@GetMapping()
-	public ResponseEntity<ResponseDTO> findAll() {
-		return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+	public ResponseEntity<ResponseDTO> findAll(
+			@RequestParam(required = false, defaultValue = "") String name,
+			@RequestParam(required = false, defaultValue = "0") String userId) {
+		return new ResponseEntity<>(service.findAll(name, userId), HttpStatus.OK);
 	}
 }

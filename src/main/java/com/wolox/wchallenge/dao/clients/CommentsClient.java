@@ -27,4 +27,18 @@ public class CommentsClient {
 		return response.getBody();
 	}
 
+	public List<CommentsDTO> getCommentsByName(String name) {
+		ResponseEntity<List<CommentsDTO>> response = restTemplate.exchange(url.concat("comments?name=").concat(name), 
+				HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<CommentsDTO>>() {});
+		return response.getBody();
+	}
+
+	public List<CommentsDTO> getCommentsByPostId(String postId) {
+		ResponseEntity<List<CommentsDTO>> response = restTemplate.exchange(url.concat("comments?postId=").concat(postId), 
+				HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<CommentsDTO>>() {});
+		return response.getBody();
+	}
+
 }

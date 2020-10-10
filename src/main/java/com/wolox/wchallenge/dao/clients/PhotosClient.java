@@ -27,4 +27,11 @@ public class PhotosClient {
 		return response.getBody();
 	}
 
+	public List<PhotosDTO> getPhotosByAlbumId(String albumId) {
+		ResponseEntity<List<PhotosDTO>> response = restTemplate.exchange(url.concat("photos?albumId=").concat(albumId), 
+				HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<PhotosDTO>>() {});
+		return response.getBody();
+	}
+
 }

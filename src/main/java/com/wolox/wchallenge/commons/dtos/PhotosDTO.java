@@ -13,8 +13,8 @@ import lombok.ToString;
 @Builder
 public class PhotosDTO {
 
-	private String albumId;
-	private String id;
+	private int albumId;
+	private int id;
 	private String title;
 	private String url;
 	private String thumbnailUrl;

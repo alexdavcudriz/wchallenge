@@ -13,8 +13,9 @@ public class AlbumsService {
 	@Autowired
 	private AlbumsClient client;
 	
-	public ResponseDTO findAll() {
-		return new ResponseDTO(ResultDTO.getSuccessfulDTO(), client.getAlbums());
+	public ResponseDTO findAll(String userId) {
+		if ("0".equals(userId)) return new ResponseDTO(ResultDTO.getSuccessfulDTO(), client.getAlbums());
+		return new ResponseDTO(ResultDTO.getSuccessfulDTO(), client.getAlbumsByUserId(userId));
 	}
 
 }

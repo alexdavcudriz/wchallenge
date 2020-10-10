@@ -24,8 +24,8 @@ public class SharedAlbumsEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long SharedAlbumsId;
-	private int AlbumId;
-	private int UserId;
+	private Integer AlbumId;
+	private Integer UserId;
 	private PermissionLevelEnum PermissionLevel;
 
 }
